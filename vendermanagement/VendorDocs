@@ -1,0 +1,219 @@
+swagger: '2.0'
+info:
+  title: Snippets API
+  description: Test description
+  termsOfService: https://www.google.com/policies/terms/
+  contact:
+    email: contact@snippets.local
+  license:
+    name: BSD License
+  version: v1
+host: 127.0.0.1:8000
+schemes:
+- http
+basePath: /api
+consumes:
+- application/json
+produces:
+- application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+- Basic: []
+paths:
+  /purchase_orders/:
+    get:
+      operationId: purchase_orders_list
+      description: Purchase Order Operations
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - purchase_orders
+    post:
+      operationId: purchase_orders_create
+      description: Purchase Order Operations
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - purchase_orders
+    parameters: []
+  /purchase_orders/{id}/:
+    get:
+      operationId: purchase_orders_read
+      description: Purchase Order Operations
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - purchase_orders
+    put:
+      operationId: purchase_orders_update
+      description: Purchase Order Operations
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - purchase_orders
+    delete:
+      operationId: purchase_orders_delete
+      description: Purchase Order Operations
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - purchase_orders
+    parameters:
+    - name: id
+      in: path
+      required: true
+      type: string
+  /purchase_orders/{po_id}/acknowledge/:
+    post:
+      operationId: purchase_orders_acknowledge_create
+      description: for Acknowledge update
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - purchase_orders
+    parameters:
+    - name: po_id
+      in: path
+      required: true
+      type: string
+  /vendors/:
+    get:
+      operationId: vendors_list
+      description: Vendors Operations
+      parameters: []
+      responses:
+        '200':
+          description: 'Vendors data fetched succesfully'
+          content:
+           application/json:
+            schema:
+              type: object
+      tags:
+      - vendors
+    post:
+      operationId: vendors_create
+      description: Vendors Operations
+      parameters: [
+        requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Jhon
+                contact_details:
+                  type: string
+                  example: '1234567890'
+                address:
+                  type: string
+                  example: asdf@1234
+                vendor_code:
+                  type: string
+                  example: A1BC
+      ]
+      responses:
+        '200':
+          description: ''
+      tags:
+      - vendors
+    parameters: []
+  /vendors/{id}/:
+    get:
+      operationId: vendors_read
+      description: Vendors Operations
+      parameters: [
+        - name: id
+          in: query
+          description: Vendor ID
+          required: true
+          schema:
+            type: int
+      ]
+      responses:
+        '200':
+          description: ''
+      tags:
+      - vendors
+    put:
+      operationId: vendors_update
+      description: Vendors Operations
+      parameters: [
+        requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Jhon
+                contact_details:
+                  type: string
+                  example: '1234567890'
+                address:
+                  type: string
+                  example: asdf@1234
+                vendor_code:
+                  type: string
+                  example: A1BC        
+      ]
+      responses:
+        '200':
+          description: ''
+      tags:
+      - vendors
+    delete:
+      operationId: vendors_delete
+      description: Vendors Operations
+      parameters: [
+        - name: id
+          in: query
+          description: Vendor ID
+          required: true
+          schema:
+            type: int
+      ]
+      responses:
+        '204':
+          description: ''
+      tags:
+      - vendors
+    parameters:
+    - name: id
+      in: path
+      required: true
+      type: string
+  /vendors/{vendor_id}/performance/:
+    get:
+      operationId: vendors_performance_list
+      description: Historical performance calculations operations
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - vendors
+    parameters:
+    - name: vendor_id
+      in: path
+      required: true
+      type: string
+definitions: {}
